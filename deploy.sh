@@ -5,7 +5,7 @@ REMOTE_HOST="46.101.11.165"
 REPO_URL="https://github.com/neyo55/hng-stage4-pr-with-github-bot.git"
 REMOTE_DIR="/tmp/test"
 
-ssh -t $REMOTE_USER@$REMOTE_HOST << EOF
+ssh -t "$REMOTE_USER@$REMOTE_HOST" << 'EOF'
   # Remove existing directory if it exists to avoid conflicts
   if [ -d "$REMOTE_DIR" ]; then
     rm -rf "$REMOTE_DIR"
