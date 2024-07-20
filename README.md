@@ -9,7 +9,7 @@ This repository contains the code for a simple `HTML` website that is deployed u
 - **style.css**: CSS file for styling the website.
 
 ### Prerequisites:
-1. Docker installed on your system.
+1. Docker installed on the system.
 
 ### Implementation Guide
 **Setting up the Docker Environment:**
