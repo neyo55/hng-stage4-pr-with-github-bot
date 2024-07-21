@@ -1,105 +1,73 @@
+# Docker App for Testing HNG-TEAM-4 Bot
 
----
+## Overview
 
-# HNG-TEAM-4-DOCKER-APP DEPLOYMENT PROJECT
+This repository contains a simple Docker app designed for testing the HNG-TEAM-4 GitHub bot. The app serves a static HTML page styled with CSS and is used to validate the bot's deployment and cleanup functionalities.
 
-This project demonstrates a simple web page deployment using Docker and Nginx. The repository contains an HTML file, a CSS file, and a Dockerfile to set up the Nginx server.
+## Repository Contents
 
-## Project Structure
+- **`index.html`**: The main HTML file that is served by the application.
+- **`style.css`**: The stylesheet that provides basic styling for the HTML content.
+- **`Dockerfile`**: The Dockerfile used to build the Docker image for the application.
 
-```plaintext
-.
-├── index.html
-├── style.css
-└── Dockerfile
-```
+## Testing the Bot
 
-### index.html
+To test the HNG-TEAM-4 bot using this Docker app, follow these steps:
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HNG-TEAM-4</title>
-  <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-  <h1>Welcome to the Deployment Server, where everything works perfectly 👍 well</h1>
-</body>
-</html>
-```
+1. **Clone the Repository**:
+   - Clone the repository where the bot is installed:
 
-### style.css
+     ```bash
+     git clone <repository-url>
+     cd <repository-directory>
+     ```
 
-```css
-body {
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  background-color: #f4f4f4;
-}
+2. **Create a New Branch**:
+   - Create a new branch to make minor changes:
 
-h1 {
-  color: #333;
-  text-align: center;
-}
-```
+     ```bash
+     git checkout -b test-deployment
+     ```
 
-### Dockerfile
+3. **Make Changes**:
+   - Make noticeable changes to the `index.html` or `style.css` file. For example, update the text in the HTML file or modify the styling in the CSS file.
 
-```Dockerfile
-FROM nginx:alpine
-WORKDIR /usr/share/nginx/html
-COPY . .
-EXPOSE 80
-```
+4. **Push the Changes**:
+   - Push the changes to the remote repository:
 
-## Getting Started
+     ```bash
+     git add .
+     git commit -m "Test deployment changes"
+     git push origin test-deployment
+     ```
 
-Follow these steps to set up and run the project:
+5. **Create a Pull Request**:
+   - Open a pull request from the `test-deployment` branch to the `main` branch in your GitHub repository. This will trigger the HNG-TEAM-4 bot to initiate a deployment.
 
-### Prerequisites
+6. **Verify Deployment**:
+   - The bot will provide a link to the deployed application. Visit this link to check if the deployment was successful and verify that the changes you made are reflected.
 
-- Docker installed on your machine
+## Cleanup Process
 
-### Build and Run the Docker Container
+After the deployment is successful, the following cleanup process is executed when the pull request is closed, regardless of whether it is merged or not:
 
-1. Clone the repository:
-    ```sh
-    git clone https://github.com/neyo55/hng-team-4-docker-app.git
-    cd hng-team-4-docker-app
-    ```
+1. **Pull Request Closure**:
+   - Close the pull request either by merging it or by closing it without merging.
 
-2. Build the Docker image:
-    ```sh
-    docker build -t hng-team-4-docker-app .
-    ```
+2. **Automatic Cleanup**:
+   - The bot will automatically execute the cleanup process to remove the Docker container and any associated resources from the deployment.
 
-3. Run the Docker container:
-    ```sh
-    docker run -d -p 80:80 hng-team-4-docker-app
-    ```
+3. **Notification**:
+   - The bot will prompt the user with a notification confirming that the cleanup was successful.
 
-4. Open your browser and navigate to `http://localhost` to see the deployed web page.
+   ![Cleanup Notification](./.img/9.png)
 
-## Explanation
+## Example
 
-- **index.html**: This is the main HTML file that displays the welcome message.
-- **style.css**: This file contains the styles for the HTML file.
-- **Dockerfile**: This file sets up an Nginx server using the Alpine Linux image and copies the HTML and CSS files to the appropriate directory.
+This image shows the appearance of the `index.html` page on the main branch.
+
+![Main Branch Index Page](./.img/1.png)
 
 ## Conclusion
 
-This simple project demonstrates how to use Docker to deploy a static website with Nginx. It can be a starting point for more complex deployments and serves as a practical example of containerizing web applications.
-
-## Further Demonstration
-
-So we are actually using this files to demontrate or we are using github bot to deploy this simple static page on a server and it runs in a container with a random port number attached to the container per pull request.
-
----
-
+By following these steps, you can ensure that the HNG-TEAM-4 bot effectively manages both the deployment and cleanup processes. This process helps verify the bot’s ability to handle Dockerized applications and maintain a clean deployment environment.
